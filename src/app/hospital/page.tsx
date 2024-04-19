@@ -1,13 +1,9 @@
-import ReviewItem from "@/components/map/review/ReviewItem";
+// 병원 리스트 페이지
+import HospitalList from "@/components/hospital/hospitalList/HospitalList";
 import React from "react";
 
-const HospitalPage = () => {
-  return (
-    <>
-      {/* 여기서부턴 리뷰 - 몇가지 안나오는 */}
-      <ReviewItem />
-    </>
-  );
+const HospitalListPage = () => {
+  return <HospitalList />;
 };
 
-export default HospitalPage;
+export default HospitalListPage;

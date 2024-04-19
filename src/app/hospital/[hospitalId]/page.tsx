@@ -1,7 +1,7 @@
 // 병원 상세페이지
 "use client";
-import HospitalInfoHeader from "@/components/map/HospitalInfoHeader";
-import HospitalMainInfo from "@/components/map/HospitalMainInfo";
+import HospitalInfoHeader from "@/components/hospital/HospitalInfoHeader";
+import HospitalMainInfo from "@/components/hospital/HospitalMainInfo";
 import useDetailTabStore from "@/shared/zustand/detailTabStore";
 import React from "react";
 
@@ -10,7 +10,7 @@ const HospitalDetailPage = ({ params }: { params: { hospitalId: string } }) => {
   return (
     <main>
       <HospitalInfoHeader params={params} />
-      <p>--------------------</p>
+      <div className="h-[10px] bg-gray-200"></div>
       <nav>
         <button
           className="bg-sky-500 mx-4"

@@ -24,8 +24,8 @@ const HospitalInfoHeader = ({ params }: { params: { hospitalId: string } }) => {
   if (isError) return <p>병원 데이터를 가져오는 동안 에러가 발생했습니다</p>;
 
   // 시간 출력 타입 변경
-  const secondRemovedStartTime = removeTimeSecond(hospitalData!.start_time);
-  const secondRemovedEndTime = removeTimeSecond(hospitalData!.end_time);
+  const secondRemovedStartTime = removeTimeSecond(hospitalData!.opentime);
+  const secondRemovedEndTime = removeTimeSecond(hospitalData!.closetime);
 
   // 운영 여부
   const currentTime = getTime();
@@ -39,28 +39,43 @@ const HospitalInfoHeader = ({ params }: { params: { hospitalId: string } }) => {
     <>
       {/* 병원 위치(지도) */}
       <section>
-        <Map
-          name={hospitalData!.hospital_name}
+        {/* <Map
+          name={hospitalData!.name}
           latitude={hospitalData.hospital_latitude}
           longitude={hospitalData.hospital_longitude}
-        />
+        /> */}
       </section>
-      <p>--------------------</p>
       {/* 병원 기본정보 */}
-      <section>
+      <section className="px-4 pt-[22px] pb-6 border-2 rounded-t-[20px]">
         {/* 이름&주소 & 스크랩 버튼 */}
-        <div className="flex">
+        <div className="mb-[42px] flex justify-between">
           <div>
-            <h1>{hospitalData!.hospital_name}</h1>
-            <p>{hospitalData!.hospital_address}</p>
+            <h1 className="semibold-20">{hospitalData!.name}</h1>
+            <p className="regular-13">{hospitalData!.address}</p>
           </div>
           <span>(스크랩icon)</span>
         </div>
-        <p>----------</p>
         {/* 진료시간 */}
         <div>
           {/* 시간에 따라 운영 여부 다르게 출력 */}
-          <span>(진료시간icon)</span> <span>{isHospitalOpen}</span>{" "}
+          <span>(진료시간icon)</span>
+          {isHospitalOpen === "진료 종료" ? (
+            <>
+              <span className="regular-16">진료 전 </span>
+              <span className="regular-14"> - </span>
+              <span className="regular-14">
+                {secondRemovedStartTime}에 진료 시작
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="regular-16">진료 중</span>
+              <span className="regular-14"> - </span>
+              <span className="regular-14">
+                {secondRemovedEndTime}에 진료 종료
+              </span>
+            </>
+          )}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -74,7 +89,7 @@ const HospitalInfoHeader = ({ params }: { params: { hospitalId: string } }) => {
           {/* 요일에 따라 요일&시간 다르게 출력 */}
           <div>
             {isTimeToggleOpen && (
-              <div>
+              <div className="regular-14">
                 <p>
                   월요일 : {secondRemovedStartTime} ~ {secondRemovedEndTime}
                 </p>
@@ -96,12 +111,12 @@ const HospitalInfoHeader = ({ params }: { params: { hospitalId: string } }) => {
         </div>
         {/* 전화번호 */}
         <div>
-          <span>(전화번호icon)</span>{" "}
-          <span>{hospitalData!.hospital_contact}</span>
+          <span>(전화번호icon)</span>
+          <span className="regular-14">{hospitalData!.contact}</span>
         </div>
         {/* 소개글 */}
         <div>
-          <span>소개글</span>{" "}
+          <span className="regular-14">소개글</span>{" "}
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -114,12 +129,12 @@ const HospitalInfoHeader = ({ params }: { params: { hospitalId: string } }) => {
           </button>
           <div>
             {isIntroductionToggleOpen && (
-              <span>{hospitalData!.hospital_introduction}</span>
+              <span className="regular-14">{hospitalData!.introduction}</span>
             )}
           </div>
         </div>
+        <button>예약하기</button>
       </section>
-      <button>예약하기</button>
     </>
   );
 };

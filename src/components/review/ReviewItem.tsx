@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import ReviewRecent from "./ReviewRecent";
-import ImageTab from "../imageTab/ImageTab";
+import ImageTab from "../hospital/imageTab/ImageTab";
 
 const ReviewItem = () => {
   const router = useRouter();

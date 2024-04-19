@@ -21,8 +21,8 @@ const HospitalList = () => {
 
   return (
     <main className="flex flex-col gap-10">
-      {hospitalListData.map((hospital) => (
-        <HospitalItem key={hospital.hospital_id} hospital={hospital} />
+      {hospitalListData!.map((hospital) => (
+        <HospitalItem key={hospital.id} hospital={hospital} />
       ))}
     </main>
   );
