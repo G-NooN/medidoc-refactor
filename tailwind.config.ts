@@ -27,7 +27,8 @@ const config: Config = {
       orange: "#FF9A00",
       yellow: "#FEF4C0",
       blue: "#387ADF",
-      red: "#F95F5F"
+      red: "#F95F5F",
+      kakao: "#FDE401"
     },
     extend: {
       fontFamily: {
