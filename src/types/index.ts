@@ -1,3 +1,14 @@
+import { Session } from "@supabase/supabase-js";
+
+// 세션 정보
+export interface SessionState {
+  session: Session | null;
+}
+
+export interface SessionAction {
+  setSession: (session: Session | null) => void;
+}
+
 export type TabState = {
   selectedTab: "default" | "image" | "review";
   selectTab: (tab: "default" | "image" | "review") => void;
