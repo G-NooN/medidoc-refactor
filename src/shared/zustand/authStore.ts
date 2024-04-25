@@ -1,28 +1,10 @@
+import { SessionAction, SessionState } from "@/types";
+import { Session } from "@supabase/supabase-js";
 import { create } from "zustand";
-import { immer } from "zustand/middleware/immer";
 
-interface State {
-  user: {
-    isLoggedIn: boolean;
-    email: string;
-  };
-}
-
-interface Action {
-  changeLoggedIn: (isSession: boolean) => void;
-}
-
-const useAuthStore = create<State & Action>()(
-  immer((set) => ({
-    user: {
-      isLoggedIn: false,
-      email: ""
-    },
-    changeLoggedIn: (isSession) =>
-      set((state) => {
-        state.user.isLoggedIn = isSession;
-      })
-  }))
-);
+const useAuthStore = create<SessionState & SessionAction>()((set) => ({
+  session: null,
+  setSession: (session: Session | null) => set({ session })
+}));
 
 export default useAuthStore;
