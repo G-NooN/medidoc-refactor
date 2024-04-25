@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-// import SupabaseProvider from "./supabaseProvider";
 import Providers from "./providers";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "MediDoc",
@@ -20,12 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Providers>
-          <Navbar />
-          {children}
-          <ReactQueryDevtools />
-        </Providers>
+      <body className="font-Pretendard h-screen">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

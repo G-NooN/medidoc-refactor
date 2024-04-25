@@ -1,8 +1,8 @@
 "use client";
 
 import { reviewAddForm, supabase, uploadReviewPhotosUrl } from "@/api/supabase";
-import ReviewRating from "@/components/map/review/ReviewRating";
-import ReviewTags from "@/components/map/review/ReviewTags";
+import ReviewRating from "@/components/review/ReviewRating";
+import ReviewTags from "@/components/review/ReviewTags";
 import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 

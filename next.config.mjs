@@ -1,12 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ["icxxtjvkfjgebycacdab.supabase.co"]
-  },
+  // images: {
+  //   domains: ["icxxtjvkfjgebycacdab.supabase.co"]
+  // },
   webpack: (config) => {
     config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
+      test: /\.svg$/,
       use: ["@svgr/webpack"]
     });
     return config;

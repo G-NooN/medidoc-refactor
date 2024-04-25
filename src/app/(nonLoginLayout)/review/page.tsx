@@ -1,4 +1,4 @@
-import ReviewItem from "@/components/map/review/ReviewItem";
+import ReviewItem from "@/components/review/ReviewItem";
 import React from "react";
 
 const HospitalPage = () => {
