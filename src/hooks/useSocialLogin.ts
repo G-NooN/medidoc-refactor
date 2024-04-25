@@ -1,5 +1,6 @@
 import { supabase } from "@/api/supabase";
 
+// 카카오 로그인
 export const signInWithKakao = async () => {
   try {
     const { error } = await supabase.auth.signInWithOAuth({
@@ -14,7 +15,7 @@ export const signInWithKakao = async () => {
 
     if (error) {
       alert("로그인 중에 에러가 발생했습니다.");
-      console.log("로그인 에러 => ", error);
+      console.error("로그인 에러 => ", error);
       throw error;
     }
   } catch (error) {
@@ -23,6 +24,7 @@ export const signInWithKakao = async () => {
   }
 };
 
+// 구글 로그인
 export const signInWithGoogle = async () => {
   try {
     const { error } = await supabase.auth.signInWithOAuth({
@@ -38,11 +40,27 @@ export const signInWithGoogle = async () => {
 
     if (error) {
       alert("로그인 중에 에러가 발생했습니다.");
-      console.log("로그인 에러 => ", error);
+      console.error("로그인 에러 => ", error);
       throw error;
     }
   } catch (error) {
     alert("구글 로그인 에러 발생 => " + error);
     console.error("구글 로그인 에러 발생 => ", error);
+  }
+};
+
+// 로그아웃
+export const signOutCurrentAccount = async () => {
+  try {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      alert("로그아웃 중에 에러가 발생했습니다.");
+      console.error("로그아웃 에러 => ", error);
+      throw error;
+    }
+  } catch (error) {
+    alert("로그아웃 에러 발생 => " + error);
+    console.error("로그아웃 에러 발생 => ", error);
   }
 };
